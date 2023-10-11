@@ -1,0 +1,36 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+pydantic = "==2.0.2"
+psycopg2-binary = "==2.9.6"
+sqlalchemy = "==2.0.17"
+alembic = "==1.11.1"
+mongoengine = "==0.27.0"
+
+[dev-packages]
+tox = "==3.28.0"
+line-profiler = "==4.0.3"
+sphinx = "==5.1.1"
+sphinx-rtd-theme = "==1.2.1"
+sphinx-autodoc-typehints = "==1.19.2"
+recommonmark = "==0.7.1"
+pre-commit = "==3.3.2"
+pytest = "==7.3.1"
+pytest-mock = "==3.10.0"
+requests-mock = "==1.10.0"
+unittest-xml-reporting = "==3.2.0"
+black = "==23.3.0"
+isort = "==5.12.0"
+pep8-naming = "==0.13.3"
+flake8 = "==6.0.0"
+pylint = "==2.17.4"
+pytest-cov = "==4.1.0"
+enum-tools = {extras = ["sphinx"], version = "0.9.0.post1"}
+sphinx-toolbox = "==3.4.0"
+
+[requires]
+python_version = "3.10"
+python_full_version = "3.10.12"

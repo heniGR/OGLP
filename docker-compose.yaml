@@ -1,0 +1,50 @@
+version: '3.4'
+services:
+  postgres_db:
+    container_name: postgres_db
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: lab2301
+      POSTGRES_PASSWORD: xftekko
+      POSTGRES_DB: lab2301_test_db
+    ports:
+      - "5432:5432"
+
+  postgres_ui:
+    container_name: postgres_ui
+    image: dpage/pgadmin4
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: lab2301@labs.baycii.com
+      PGADMIN_DEFAULT_PASSWORD: xftekko
+    ports:
+      - "5050:80"
+    depends_on:
+      - postgres_db
+
+  mongo_db:
+    container_name: mongo_db
+    image: mongo:latest
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: lab2301
+      MONGO_INITDB_ROOT_PASSWORD: xftekko
+    ports:
+      - 27017:27017
+
+  mongo_ui:
+    container_name: mongo_ui
+    image: mongo-express
+    restart: always
+    ports:
+      - "5051:8081"
+    environment:
+      ME_CONFIG_MONGODB_SERVER: mongo_db
+      ME_CONFIG_BASICAUTH_USERNAME: lab2301
+      ME_CONFIG_BASICAUTH_PASSWORD: xftekko
+      ME_CONFIG_MONGODB_ADMINUSERNAME: lab2301
+      ME_CONFIG_MONGODB_ADMINPASSWORD: xftekko
+      ME_CONFIG_MONGODB_URL: mongo://lab2301:xftekko@mongo_db:27017/
+    depends_on:
+      - mongo_db
